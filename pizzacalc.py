@@ -1,26 +1,32 @@
 class Person(object):
 
 	moneyOwed = 0
-	numberOfPizzas = 0
 
 	def __init__(self):
 		self.name = self.getName()
 
 	def getName(self):
-		return raw_input("Name?: ")
+		return input("Name?: ")
 		
 	def getcost(self):
 		while(True):
 			try:
-				cost = float(raw_input("Cost?: "))
+				cost = float(input("Cost?: "))
 				break
 			except ValueError:
-				print ("Please input a numebr: ")
+				print ("Please input a number: ")
 		return cost
 
 	def addPizza(self):
-		numberOfPizzas += 1
-		return moneyOwed + self.getcost()
+		self.moneyOwed += self.getcost()
+        return self.moneyOwed
 
 
-nic = Person() 
+print("Welcome to the Pizza Calculator:")
+OnePizzaPayer = input("Will one person be paying for the order? [Y/N]: ")
+if(OnePizzaPayer.tolower() == "y"):
+	#add code for making the pizza buyer not 
+else:
+
+
+while(True):
