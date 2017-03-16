@@ -1,7 +1,17 @@
 from Person import Person
 
+def TryExcept(type_, message, output, returnVal):
+    while True:
+        try:
+            returnVal = type_(input(message))
+            break
+        except ValueError:
+            print(output)
+    return returnVal
+
 def calcTotalCost(people, tax):
     totalCost = 0
+    tip = 0
     while(True):
         try:
             tipType = str(input("Tip percentage (T) or Tip amount (A)?: "))
@@ -12,20 +22,11 @@ def calcTotalCost(people, tax):
             print ("Please input valid option")
 
     if(tipType.lower == "t"):
-        while(True):
-            try:
-                tip = float(input("What percentage do you want to tip?: "))
-                break
-            except ValueError:
-                print("Please input a number")
+        tip = TryExcept(float, "What percentage do you want to tip?: ", "Please input a number", tip)
+        
     else: 
-        while(True):
-            try:
-                tip = float(input("What amount would you want to tip?: "))
-                break
-            except ValueError:
-                print("Please input a number: ")
-
+        tip = TryExcept(float, "What amount would you want to tip?: ", "Please input a number: ", tip)
+        
     if(tipType == "t"):
         for person in people:
             totalCost += person.moneyOwed
@@ -39,6 +40,3 @@ def calcTotalCost(people, tax):
     totalCost *= (1+(tax/100))
 
     return totalCost
-
-
-
