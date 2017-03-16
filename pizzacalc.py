@@ -3,7 +3,7 @@ from Person import Person
 def TryExcept(type_, message, output, returnVal):
     while True:
         try:
-            returnVal = type_(input(message))
+            returnVal = varType(input(message))
             break
         except ValueError:
             print(output)
