@@ -1,6 +1,6 @@
 from Person import Person
 
-def TryExcept(type_, message, output, returnVal):
+def TryExcept(varType, message, output, returnVal):
     while True:
         try:
             returnVal = varType(input(message))
